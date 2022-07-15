@@ -25,15 +25,6 @@ def exe_consulta(conn, consulta):
         print("Error:", e)
 
 
-def viewSlang(conn, consulta):
-    c=conn.cursor()
-    try:
-        c.execute(consulta)
-        slangs = c.fetchone()
-        print(slangs)
-    except Error as e:
-        print("Error:", e)
-
 def viewSlangs(conn, consulta):
     c = conn.cursor()
     try:
@@ -138,6 +129,9 @@ elif resp == 'n' or resp == 'N':
     print("Slangs:\n")
     viewSlangs(conn, selectAll)
 
-viewSlangs(conn, selectAll)
+if resp == 'n' or resp == 'N':
+    salir(conn)
+elif resp == 'Y' or resp == 'y': 
+    viewSlangs(conn, selectAll)
 salir(conn)
 
